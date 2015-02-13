@@ -1,22 +1,35 @@
 #include "championstat.h"
 
+/*!
+ * \brief The magicResist enum
+ */
+enum class magicResist
+{
+        LOW,
+        MEDIUM,
+        HIGH,
+        END
+};
 
 ChampionStat::ChampionStat(QObject *parent) : QObject(parent)
 {
 
 }
 
-ChampionStat::ChampionStat(float attackDamage, float attackSpeed, float armor, float health, float healthRegeneration, float magicResistance, float mana, float manaRegeneration, float movementSpeed, float attackDamageGrowth, float attackSpeedGrowth, float armorGrowth, float healthGrowth, float healthRegenerationGrowth, float magicResistanceGrowth, float manaGrowth, float manaRegenerationGrowth, QObject *parent) :
+ChampionStat::ChampionStat(float attackDamage,float attackSpeed,float armor, float health,float healthRegeneration,float mana,float manaRegeneration,float movementSpeed,
+                           float attackDamageGrowth,float attackSpeedGrowth,float armorGrowth,float healthGrowth,float healthRegenerationGrowth, float manaGrowth, float manaRegenerationGrowth,
+                           magicResist type,
+                           QObject *parent) :
     QObject(parent),
     attackDamage(attackDamage),attackSpeed(attackSpeed),armorPenetration(0),criticalStrikeChance(0),criticalStrikeDamage(200),lifeSteal(0),
-    armor(armor),health(health),healthRegeneration(healthRegeneration),magicResistance(magicResistance),
+    armor(armor),health(health),healthRegeneration(healthRegeneration),magicResistance(0),
     mana(mana),manaRegeneration(manaRegeneration),abilityPower(0),cooldownReduction(0),magicPenetration(0),spellVamp(0),
     movementSpeed(movementSpeed),
     attackDamageGrowth(attackDamageGrowth),attackSpeedGrowth(attackSpeedGrowth),armorGrowth(armorGrowth),
-    healthGrowth(healthGrowth),healthRegenerationGrowth(healthRegenerationGrowth),magicResistanceGrowth(magicResistanceGrowth),manaGrowth(manaGrowth),manaRegenerationGrowth(manaRegenerationGrowth),
+    healthGrowth(healthGrowth),healthRegenerationGrowth(healthRegenerationGrowth),magicResistanceGrowth(0),manaGrowth(manaGrowth),manaRegenerationGrowth(manaRegenerationGrowth),
     attackDamageFinal(attackDamage),attackSpeedFinal(attackSpeed),armorFinal(armor),healthFinal(health),healthRegenerationFinal(healthRegeneration),magicResistanceFinal(magicResistance),manaFinal(mana),manaRegenerationFinal(manaRegeneration),percentage(0)
 {
-
+    this->magicResistanceInit(type);
 }
 
 ChampionStat::~ChampionStat()
@@ -74,6 +87,25 @@ void ChampionStat::calculatePercentage(int level)
 void ChampionStat::calculateFinalStat(float& statFinal, float& statBase, float& statGrowth)
 {
     statFinal = statBase + ((statGrowth / 100) * percentage);
+}
+
+/*!
+ * \brief ChampionStat::magicResistanceInit
+ * \param type
+ */
+void ChampionStat::magicResistanceInit(magicResist type)
+{
+    if (type == magicResist::LOW)
+    {
+        magicResistance = 30;
+        magicResistanceFinal = 30;
+        magicResistanceGrowth = 0;
+    } else if (type == magicResist::HIGH)
+
+        magicResistance = 32.1;
+        magicResistanceFinal = 32.1;
+        magicResistanceGrowth = 1.25;
+    }
 }
 
 

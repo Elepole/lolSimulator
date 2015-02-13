@@ -8,7 +8,10 @@ ChampionStat::ChampionStat(QObject *parent) : QObject(parent)
 
 ChampionStat::ChampionStat(float attackDamage, float attackSpeed, float armor, float health, float healthRegeneration, float magicResistance, float mana, float manaRegeneration, float movementSpeed, float attackDamageGrowth, float attackSpeedGrowth, float armorGrowth, float healthGrowth, float healthRegenerationGrowth, float magicResistanceGrowth, float manaGrowth, float manaRegenerationGrowth, QObject *parent) :
     QObject(parent),
-    attackDamage(attackDamage),attackSpeed(attackSpeed),armor(armor),health(health),healthRegeneration(healthRegeneration),magicResistance(magicResistance),mana(mana),manaRegeneration(manaRegeneration),movementSpeed(movementSpeed),
+    attackDamage(attackDamage),attackSpeed(attackSpeed),armorPenetration(0),criticalStrikeChance(0),criticalStrikeDamage(200),lifeSteal(0),
+    armor(armor),health(health),healthRegeneration(healthRegeneration),magicResistance(magicResistance),
+    mana(mana),manaRegeneration(manaRegeneration),abilityPower(0),cooldownReduction(0),magicPenetration(0),spellVamp(0),
+    movementSpeed(movementSpeed),
     attackDamageGrowth(attackDamageGrowth),attackSpeedGrowth(attackSpeedGrowth),armorGrowth(armorGrowth),
     healthGrowth(healthGrowth),healthRegenerationGrowth(healthRegenerationGrowth),magicResistanceGrowth(magicResistanceGrowth),manaGrowth(manaGrowth),manaRegenerationGrowth(manaRegenerationGrowth),
     attackDamageFinal(attackDamage),attackSpeedFinal(attackSpeed),armorFinal(armor),healthFinal(health),healthRegenerationFinal(healthRegeneration),magicResistanceFinal(magicResistance),manaFinal(mana),manaRegenerationFinal(manaRegeneration),percentage(0)

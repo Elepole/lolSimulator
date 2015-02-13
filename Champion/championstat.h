@@ -3,8 +3,9 @@
 
 #include <QObject>
 #include <QDebug>
+#include "magicresit.h"
 
-enum class magicResist;
+
 
 
 class ChampionStat : public QObject
@@ -15,7 +16,7 @@ public:
     explicit ChampionStat(
             float attackDamage,float attackSpeed,float armor, float health,float healthRegeneration,float mana,float manaRegeneration,float movementSpeed,
             float attackDamageGrowth,float attackSpeedGrowth,float armorGrowth,float healthGrowth,float healthRegenerationGrowth, float manaGrowth, float manaRegenerationGrowth,
-            magicResist type,
+            magicResist magicResistanceType,
             QObject *parent = 0);
     ~ChampionStat();
 

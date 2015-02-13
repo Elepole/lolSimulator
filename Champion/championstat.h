@@ -3,6 +3,10 @@
 
 #include <QObject>
 #include <QDebug>
+#include "magicresit.h"
+
+
+
 
 class ChampionStat : public QObject
 {
@@ -10,8 +14,9 @@ class ChampionStat : public QObject
 public:
     explicit ChampionStat(QObject *parent = 0);
     explicit ChampionStat(
-            float attackDamage,float attackSpeed,float armor, float health,float healthRegeneration, float magicResistance,float mana,float manaRegeneration,float movementSpeed,
-            float attackDamageGrowth,float attackSpeedGrowth,float armorGrowth,float healthGrowth,float healthRegenerationGrowth, float magicResistanceGrowth, float manaGrowth, float manaRegenerationGrowth,
+            float attackDamage,float attackSpeed,float armor, float health,float healthRegeneration,float mana,float manaRegeneration,float movementSpeed,
+            float attackDamageGrowth,float attackSpeedGrowth,float armorGrowth,float healthGrowth,float healthRegenerationGrowth, float manaGrowth, float manaRegenerationGrowth,
+            magicResist magicResistanceType,
             QObject *parent = 0);
     ~ChampionStat();
 
@@ -43,11 +48,13 @@ protected:
 
     void calculatePercentage(int level);
     void calculateFinalStat(float &statFinal, float &statBase, float &statGrowth);
+    void magicResistanceInit(magicResist type);
 
 
 signals:
 
 public slots:
+
 };
 
 #endif // CHAMPIONSTAT_H

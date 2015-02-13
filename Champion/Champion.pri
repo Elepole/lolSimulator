@@ -3,7 +3,8 @@ DEPENDPATH += $$PWD
 
 HEADERS += \
     $$PWD/hecarim.h \
-    $$PWD/championstat.h
+    $$PWD/championstat.h \
+    $$PWD/magicresit.h
 
 SOURCES += \
     $$PWD/hecarim.cpp \

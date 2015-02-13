@@ -2,8 +2,9 @@
 #define HECARIM_H
 
 #include <QObject>
+#include <championstat.h>
 
-class Hecarim : public QObject
+class Hecarim : public ChampionStat
 {
     Q_OBJECT
 public:

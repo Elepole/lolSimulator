@@ -11,6 +11,7 @@ QT       -= gui
 TARGET = lolConsole
 CONFIG   += console
 CONFIG   -= app_bundle
+CONFIG += c++11
 
 TEMPLATE = app
 
@@ -18,3 +19,5 @@ TEMPLATE = app
 SOURCES += main.cpp
 
 include(Champion/Champion.pri)
+
+DISTFILES +=

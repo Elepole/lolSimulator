@@ -50,7 +50,7 @@ ChampionStat::ChampionStat(float attackDamage,float attackSpeed,float armor, flo
     movementSpeed(movementSpeed),
     attackDamageGrowth(attackDamageGrowth),attackSpeedGrowth(attackSpeedGrowth),armorGrowth(armorGrowth),
     healthGrowth(healthGrowth),healthRegenerationGrowth(healthRegenerationGrowth),magicResistanceGrowth(0),manaGrowth(manaGrowth),manaRegenerationGrowth(manaRegenerationGrowth),
-    attackDamageFinal(attackDamage),attackSpeedFinal(attackSpeed),armorFinal(armor),healthFinal(health),healthRegenerationFinal(healthRegeneration),magicResistanceFinal(magicResistance),manaFinal(mana),manaRegenerationFinal(manaRegeneration),percentage(0)
+    attackDamageFinal(attackDamage),attackSpeedFinal(attackSpeed),armorFinal(armor),healthFinal(health),healthRegenerationFinal(healthRegeneration),magicResistanceFinal(magicResistance),manaFinal(mana),manaRegenerationFinal(manaRegeneration),percentage(0),level(1)
 {
     this->magicResistanceInit(magicResistanceType);
 }
@@ -71,9 +71,9 @@ ChampionStat::~ChampionStat()
  *
  * Increase the stat according to the level of the champion.
  */
-void ChampionStat::increaseStat(int level)
+void ChampionStat::increaseStat()
 {
-    this->calculatePercentage(level);
+    this->calculatePercentage();
     this->calculateFinalStat(attackDamageFinal,attackDamage,attackDamageGrowth);
     this->calculateFinalStat(attackSpeedFinal,attackSpeed,attackSpeedGrowth);
     this->calculateFinalStat(armorFinal,armor,armorGrowth);
@@ -85,6 +85,17 @@ void ChampionStat::increaseStat(int level)
     qDebug() << health;
 
 }
+int ChampionStat::getLevel() const
+{
+    return level;
+}
+
+void ChampionStat::setLevel(int value)
+{
+    level = value;
+}
+
+
 
 
 /*!
@@ -94,7 +105,7 @@ void ChampionStat::increaseStat(int level)
  *
  * Calculate the percentage of growth stat according to the level.
  */
-void ChampionStat::calculatePercentage(int level)
+void ChampionStat::calculatePercentage()
 {
     //The % of Growth stat is determined by the following formula:
     // Percentage = [(NextLevel × 3.5) + 65]

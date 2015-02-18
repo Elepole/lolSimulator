@@ -18,10 +18,15 @@ public:
             float attackDamageGrowth,float attackSpeedGrowth,float armorGrowth,float healthGrowth,float healthRegenerationGrowth, float manaGrowth, float manaRegenerationGrowth,
             magicResist magicResistanceType,
             QObject *parent = 0);
-    ~ChampionStat();
+    virtual ~ChampionStat();
 
-    void increaseStat(int level);
+    void increaseStat();
 
+
+
+
+    int getLevel() const;
+    void setLevel(int value);
 
 protected:
 
@@ -44,9 +49,9 @@ protected:
     //Final stat
     float attackDamageFinal,attackSpeedFinal,armorFinal,healthFinal,healthRegenerationFinal,manaFinal,manaRegenerationFinal,magicResistanceFinal;
 
-    int percentage;
+    int percentage,level;
 
-    void calculatePercentage(int level);
+    void calculatePercentage();
     void calculateFinalStat(float &statFinal, float &statBase, float &statGrowth);
     void magicResistanceInit(magicResist type);
 

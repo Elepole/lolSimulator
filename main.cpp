@@ -7,7 +7,8 @@ int main(int argc, char *argv[])
 
     Hecarim test;
 
-    test.increaseStat(18);
+    test.setLevel(5);
+    test.increaseStat();
 
     return a.exec();
 }

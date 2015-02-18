@@ -2,10 +2,9 @@
 #define HECARIM_H
 
 #include <QObject>
-#include "championstat.h""
 #include "abilityinterface.h"
 
-class Hecarim : public ChampionStat, public AbilityInterface
+class Hecarim : public AbilityAbstract
 {
     Q_OBJECT
 public:

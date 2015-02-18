@@ -1,6 +1,6 @@
 #include "hecarim.h"
 
-Hecarim::Hecarim(QObject *parent) : ChampionStat(61.376,0.67,26.72,599.6,9.26,277.2,7.505,345,95,2.5,4,95,0.75,40,0.6,magicResist::HIGH,parent), level(0)
+Hecarim::Hecarim(QObject *parent) : AbilityAbstract(61.376,0.67,26.72,599.6,9.26,277.2,7.505,345,95,2.5,4,95,0.75,40,0.6,magicResist::HIGH,parent), level(0)
 {
 
 }
@@ -33,8 +33,77 @@ void Hecarim::firstAbility(int abilityLevel)
         break;
     }
 
-    firstAbilityDps = ((200 + ((attackDamageFinal / 100) *60)) / 2) * seconds
+    this->physicalDamage(baseDamage,0,60);
 
+}
+
+void Hecarim::secondAbility(int abilityLevel) {
+    int baseDamage =0;
+    switch (abilityLevel) {
+    case 1:
+        baseDamage = 20;
+        break;
+    case 2:
+        baseDamage = 30;
+        break;
+    case 3:
+        baseDamage = 40;
+        break;
+    case 4:
+        baseDamage = 50;
+        break;
+    case 5:
+        baseDamage = 60;
+        break;
+    default:
+        break;
+    }
+
+    this->magicalDamage(baseDamage,20);
+}
+
+void Hecarim::thirdAbility(int abilityLevel) {
+    int baseDamage =0;
+    switch (abilityLevel) {
+    case 1:
+        baseDamage = 40;
+        break;
+    case 2:
+        baseDamage = 75;
+        break;
+    case 3:
+        baseDamage = 110;
+        break;
+    case 4:
+        baseDamage = 145;
+        break;
+    case 5:
+        baseDamage = 180;
+        break;
+    default:
+        break;
+    }
+
+    this->physicalDamage(baseDamage,0,50);
+}
+
+void Hecarim::fourthAbility(int abilityLevel) {
+    int baseDamage =0;
+    switch (abilityLevel) {
+    case 1:
+        baseDamage = 150;
+        break;
+    case 2:
+        baseDamage = 250;
+        break;
+    case 3:
+        baseDamage = 350;
+        break;
+    default:
+        break;
+    }
+
+    this->magicalDamage(baseDamage,100);
 }
 
 void Hecarim::passivAbility()
